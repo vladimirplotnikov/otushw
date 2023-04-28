@@ -1,0 +1,32 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+    id "java"
+}
+
+group = "com.github.vladimirplotnikov"
+version = "1.0-SNAPSHOT"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 1. Use Guava in your implementation only:
+    implementation("com.google.guava:guava:31.1-jre")
+    testImplementation(platform("org.junit:junit-bom:5.9.1"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+shadowJar {
+    manifest {
+        attributes(
+                'Main-Class' : 'com.github.vladimirplotnikov.HelloOtus'
+        )
+    }
+}
+
+tasks.build.dependsOn tasks.shadowJar
+
+tasks.test {
+    useJUnitPlatform()
+}
