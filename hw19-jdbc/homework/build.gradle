@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+task prepareKotlinBuildScriptModel {
+
+}
+dependencies {
+    dependencies {
+        implementation project(':hw19-jdbc:demo')
+
+        implementation 'ch.qos.logback:logback-classic'
+        implementation 'org.flywaydb:flyway-core'
+        implementation 'org.postgresql:postgresql'
+    }
+}
+
+test {
+}
