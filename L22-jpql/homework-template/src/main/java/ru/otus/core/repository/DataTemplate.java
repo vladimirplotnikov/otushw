@@ -11,7 +11,7 @@ public interface DataTemplate<T> {
 
     List<T> findAll(Session session);
 
-    T insert(Session session, T object);
+    void insert(Session session, T object);
 
-    T update(Session session, T object);
+    void update(Session session, T object);
 }

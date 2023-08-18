@@ -1,16 +1,12 @@
 package ru.otus.crm.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -20,14 +16,20 @@ import lombok.Setter;
 public class Client implements Cloneable {
 
     @Id
-    @SequenceGenerator(name = "client_gen", sequenceName = "client_seq",
-            initialValue = 1, allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_gen")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
     private String name;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_address")
+    private Address address;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
+    @JoinColumn(name = "client_id", nullable = false, updatable = false)
+    private List<Phone> phone;
 
     public Client(String name) {
         this.id = null;
@@ -38,10 +40,16 @@ public class Client implements Cloneable {
         this.id = id;
         this.name = name;
     }
+    public Client(Long id, String name,Address address,List<Phone> phone) {
+        this.id = id;
+        this.name = name;
+        this.address=address;
+        this.phone=phone;
+    }
 
     @Override
     public Client clone() {
-        return new Client(this.id, this.name);
+        return new Client(this.id, this.name,this.address,this.phone);
     }
 
     @Override

@@ -3,8 +3,8 @@ package ru.otus.crm.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.otus.core.repository.DataTemplate;
-import ru.otus.core.sessionmanager.TransactionManager;
 import ru.otus.crm.model.Client;
+import ru.otus.core.sessionmanager.TransactionManager;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,13 +25,13 @@ public class DbServiceClientImpl implements DBServiceClient {
         return transactionManager.doInTransaction(session -> {
             var clientCloned = client.clone();
             if (client.getId() == null) {
-                var savedClient = clientDataTemplate.insert(session, clientCloned);
+                clientDataTemplate.insert(session, clientCloned);
                 log.info("created client: {}", clientCloned);
-                return savedClient;
+                return clientCloned;
             }
-            var savedClient = clientDataTemplate.update(session, clientCloned);
-            log.info("updated client: {}", savedClient);
-            return savedClient;
+            clientDataTemplate.update(session, clientCloned);
+            log.info("updated client: {}", clientCloned);
+            return clientCloned;
         });
     }
 
