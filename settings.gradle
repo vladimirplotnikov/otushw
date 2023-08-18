@@ -8,5 +8,6 @@
  */
 
 rootProject.name = 'otushw'
+include ':L22-jpql:homework-template:test'
 include 'hw19-jdbc:demo'
 include 'hw19-jdbc:homework'
