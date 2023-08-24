@@ -9,11 +9,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "ADDRESS")
-public class Address {
+public class Address implements Cloneable {
 
     @Id
-    @Column(name = "id_address")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "address_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "street")

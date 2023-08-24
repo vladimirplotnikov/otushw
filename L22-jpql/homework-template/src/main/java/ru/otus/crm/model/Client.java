@@ -4,6 +4,8 @@ package ru.otus.crm.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -16,18 +18,21 @@ import java.util.List;
 public class Client implements Cloneable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_address")
+    @OneToOne(fetch = FetchType.LAZY,
+            orphanRemoval = true,
+            cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    @Fetch(FetchMode.JOIN)
+    @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,orphanRemoval = false)
     @JoinColumn(name = "client_id", nullable = false, updatable = false)
     private List<Phone> phone;
 

@@ -8,9 +8,10 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity
 @Table(name = "phone")
-public class Phone {
+public class Phone implements Cloneable{
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "phone_id")
     private Long id;
 
     @Column(name = "number")
