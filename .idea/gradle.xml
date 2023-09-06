@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$/buildSrc" name="buildSrc">
+                <projects>
+                  <project path="$PROJECT_DIR$/buildSrc" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/L22-jpql" />
+            <option value="$PROJECT_DIR$/L22-jpql/homework-template" />
+            <option value="$PROJECT_DIR$/L22-jpql/homework-template/test" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/hw19-jdbc" />
+            <option value="$PROJECT_DIR$/hw19-jdbc/demo" />
+            <option value="$PROJECT_DIR$/hw19-jdbc/homework" />
+            <option value="$PROJECT_DIR$/hw25-webserver" />
+            <option value="$PROJECT_DIR$/hw25-webserver/TemplateService" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
