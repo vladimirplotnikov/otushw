@@ -1,7 +1,15 @@
 plugins {
     id 'java'
+    id "application"
 }
 
+apply plugin : "java"
+ext {
+    javaMainClass = "org.example.Main"
+}
+application {
+    mainClassName = javaMainClass
+}
 group 'org.example'
 version '1.0-SNAPSHOT'
 
@@ -20,3 +28,4 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
