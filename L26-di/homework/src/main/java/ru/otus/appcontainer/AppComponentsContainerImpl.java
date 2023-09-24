@@ -8,6 +8,8 @@ import java.lang.reflect.AnnotatedType;
 import java.lang.reflect.Method;
 import java.util.*;
 
+import static java.util.Arrays.stream;
+
 public class AppComponentsContainerImpl implements AppComponentsContainer {
 
     private final List<Object> appComponents = new ArrayList<>();
@@ -23,14 +25,15 @@ public class AppComponentsContainerImpl implements AppComponentsContainer {
 
             Object configObject = configClass.getConstructor().newInstance();
             Method[] methodArray = configClass.getDeclaredMethods();
+            Arrays.sort(methodArray,Comparator.comparingInt(method -> method.getAnnotation(AppComponent.class).order()));
             for (Method method : methodArray) {
                 String componentName = method.getAnnotation(AppComponent.class).name();
                 if (appComponentsByName.containsKey(componentName)) {
                     throw new RuntimeException("В контексте уже есть компонент с таким именем");
                 }
-                List<Object> parameters = (List<Object>) Arrays.stream(method.getParameterTypes()).map(type -> getAppComponent(type)).toList();
+                List<Object> parameters = (List<Object>) stream(method.getParameterTypes()).map(type -> getAppComponent(type)).toList();
                 Object classObject = method.invoke(configObject, parameters.toArray());
-                appComponentsByName.put(method.getAnnotation(AppComponent.class).name(), classObject);
+                appComponentsByName.put(componentName, classObject);
                 appComponents.add(classObject);
             }
         }
