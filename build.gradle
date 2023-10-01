@@ -19,7 +19,9 @@ allprojects {
         dependencies {
             imports {
                 mavenBom "org.springframework.boot:spring-boot-dependencies:3.1.2"
-                mavenBom "org.testcontainers:testcontainers-bom:1.17.3"
+                mavenBom "org.testcontainers:testcontainers-bom:1.18.0"
+                mavenBom "org.testcontainers:junit-jupiter:1.18.3"
+                mavenBom "org.junit.jupiter:junit-jupiter:5.8.1"
                 mavenBom "com.google.protobuf:protobuf-bom:3.21.1"
                 mavenBom "org.springframework.boot:spring-boot-starter-websocket:3.1.2"
                 mavenBom "org.springframework.boot:spring-boot-starter-thymeleaf:3.1.2"
