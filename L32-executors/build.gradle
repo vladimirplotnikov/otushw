@@ -1,19 +1,19 @@
 plugins {
-    id "java"
+    id 'java'
+    id "application"
 }
 
-group = "com.github.vladimirplotnikov"
-version = "1.0-SNAPSHOT"
+apply plugin : "java"
+ext {
+    javaMainClass = "com.github.vladimirplotnikov.homework.Main"
+}
+application {
+    mainClassName = javaMainClass
+}
+group 'org.example'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(platform("org.junit:junit-bom:5.9.1"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
