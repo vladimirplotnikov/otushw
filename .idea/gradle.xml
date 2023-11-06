@@ -28,6 +28,8 @@
             <option value="$PROJECT_DIR$/L38-webflux" />
             <option value="$PROJECT_DIR$/L38-webflux/reactive-service" />
             <option value="$PROJECT_DIR$/L38-webflux/slow-service" />
+            <option value="$PROJECT_DIR$/L33-queue" />
+            <option value="$PROJECT_DIR$/L34-multiproc" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/hw19-jdbc" />
             <option value="$PROJECT_DIR$/hw19-jdbc/demo" />
