@@ -25,6 +25,9 @@
             <option value="$PROJECT_DIR$/L26-di/homework" />
             <option value="$PROJECT_DIR$/L28-springDataJdbc" />
             <option value="$PROJECT_DIR$/L32-executors" />
+            <option value="$PROJECT_DIR$/L38-webflux" />
+            <option value="$PROJECT_DIR$/L38-webflux/reactive-service" />
+            <option value="$PROJECT_DIR$/L38-webflux/slow-service" />
             <option value="$PROJECT_DIR$/L33-queue" />
             <option value="$PROJECT_DIR$/L34-multiproc" />
             <option value="$PROJECT_DIR$/buildSrc" />
